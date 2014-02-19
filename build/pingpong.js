@@ -6840,9 +6840,11 @@ module.exports = function (systems) {
 },{}],7:[function(require,module,exports){
 var gast = require("gast");
 var _ = require("lodash");
-var gameWidth = 500,
-    gameHeight = 250;
-
+var html = document.documentElement,
+    body = document.body,
+    gameWidth = Math.max( body.scrollWidth, body.offsetWidth, html.clientWidth, html.scrollWidth, html.offsetWidth ),
+    gameHeight = Math.min( body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight );
+console.log (body.scrollHeight + " " +  body.offsetHeight + " " +  html.clientHeight + " " +  html.scrollHeight + " " +  html.offsetHeight )
 var randomBetween = function(min, max) {
   return min + (max - min) * Math.random();
 };
